@@ -8,11 +8,13 @@ function App() {
   const apiUrl = 'https://jsonplaceholder.typicode.com/todos'
 
   const getApiData = async () => {
+    try{
     const response = await fetch(apiUrl)
     .then((response) => response.json())
-    .catch((error)=> console.log(error))
-
     setTask(response);
+    }catch(erroe){
+      console.log(error);
+    }
   };
 
 useEffect(()=>{
