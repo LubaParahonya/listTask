@@ -9,7 +9,9 @@ function App() {
 
   const getApiData = async () => {
     const response = await fetch(apiUrl)
-    .then((response) => response.json());
+    .then((response) => response.json())
+    .catch((error)=> console.log(error))
+
     setTask(response);
   };
 
@@ -21,6 +23,7 @@ useEffect(()=>{
     // if(isLoading){
     //     return 'Идет загрузка...'
     // }
+    
 }, [])
 
   return (
