@@ -1,16 +1,15 @@
-*{
-    margin: 0;
-    padding: 0;
+.testTitle{
+    font-size: x-large;
+    width: calc(100% - 50px);
+    align-content: center;
+    height: 100%;
 }
 
-div .item-list{
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 70px;
-   
-    .item{
+
+
+
+
+.item{
         display: flex;
         width: 20vw;
         height: 65px;
@@ -57,11 +56,19 @@ div .item-list{
 
     }
    
-}
+    .test{
+        width: 40%;
+        height: 40%;
+        background-color: rgb(104, 98, 98);
+        color: #FFF5EE;
+        
+        
+        
+        
+    }
 
-.task{   
-    text-align: center;
-    color: #696969;
-    margin-top: 50px;
-}
    
+
+
+
+
