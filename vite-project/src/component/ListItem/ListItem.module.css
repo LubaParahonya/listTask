@@ -1,0 +1,26 @@
+html , body {
+    height: 100%;
+}
+
+div #root{
+    height: 100%;
+}
+
+
+.container { 
+    border: 1px solid green;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* height: 100%; */
+    align-items: center;
+    height: 100vh;
+ 
+}
+
+.color_background {
+    background-color: rgb(228, 236, 247);
+}
+
+
+

@@ -1,0 +1,8 @@
+.mainFooter{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: rgb(126, 125, 125);
+    color: aliceblue;
+    opacity: 70%;
+}

@@ -1,0 +1,19 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: url('../img/cvet-svet-oboi.jpg');
+    object-fit: cover;
+  .form{
+    width: 80%;
+    .textReg{
+        color: blue;
+        margin-left: 10px;
+        cursor: pointer;
+       
+    }
+  }
+    
+}
