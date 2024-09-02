@@ -4,15 +4,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import uuid from 'react-uuid';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { AuthContext } from '../Auth/Context/Context';
+import { useDispatch} from 'react-redux';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
+import { removeUser } from '../../Redux/userSlice';
+
+
+
 
 
 
 export const Navigation = () => {
-  const {logOut} = useContext(AuthContext)
+  const dispatch = useDispatch();
   const navigate = useNavigate()
   const hendelSingOut = () =>{
-    logOut()
+    signOut(auth)
+    .then(()=>dispatch(removeUser()))
     navigate('/login')
   }
     const listNav = [{

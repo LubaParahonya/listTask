@@ -3,45 +3,54 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import style from '../Context/Context.module.css' 
-import { Link, Navigate, useLocation, useNavigate} from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import * as s from './Login.styled';
-import { AuthContext } from '../Context/Context';
+import { useDispatch } from 'react-redux';
+import {signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../firebase';
+import userSlice from '../../../Redux/userSlice';
+import { setUser } from '../../../Redux/userSlice';
+
 
 
 
 export const Login = () => {
-     const {authuser, logIn, loading} = useContext(AuthContext)
      const [email, setEmail] = useState('')
      const [password, setPassword] = useState('')
      const navigate = useNavigate()
+     const dispatch = useDispatch()
+     
 
-     console.log(authuser)
+     // if(loading){
+     //      return <p>Идет загрузка</p>
+     // }
 
-     if(loading){
-          return <p>Идет загрузка</p>
-     }
+     // if(user){
+     //      navigate('/')
+     // }
 
-     if(authuser){
-          navigate('/')
-     }
-
-     const handelSubmit = (e)=> {
-          try {
-               e.preventDefault()
-               logIn(email, password)
-               .then((result)=> {
-                    console.log(result)
-                    navigate('/')
+     const handelSubmit = (e, email, password)=> {
+          e.preventDefault()
+          console.log('привет ')
+               signInWithEmailAndPassword(auth, email, password)
+               .then(({user})=> {
+                    console.log('привет номер один')
+                    dispatch(setUser({
+                         email: user.email,
+                         id: user.uid,
+                         token: user.accessToken
+     
+                    }))
+                    console.log('привет номер два')
+                    navigate('/dnd')
                     setPassword('')
                     setEmail('')
                     console.log('Вы вошли')
                })
-          } catch(e){
-               console.log(e)
-          }
+               .catch((error)=> console.log(error))
      }
 
-const handleChangeEmail = (e)=> setEmail(e.target.value);
+
 
   return (
      <>
@@ -55,7 +64,8 @@ const handleChangeEmail = (e)=> setEmail(e.target.value);
                               Введите ваш логин и пароль
                          </Typography>
                          <TextField 
-                              onChange={handleChangeEmail}
+                              autoComplete="off"
+                              onChange={(e)=> setEmail(e.target.value)}
                               value={email}
                               fullWidth
                               margin='normal'
@@ -66,6 +76,7 @@ const handleChangeEmail = (e)=> setEmail(e.target.value);
                               size='small'
                          />
                          <TextField
+                              autoComplete="off"
                               onChange={(e)=> setPassword(e.target.value)}
                               alue={password}
                               fullWidth
@@ -78,7 +89,7 @@ const handleChangeEmail = (e)=> setEmail(e.target.value);
                               size='small'
                          />
                          <Button
-                              onClick={handelSubmit}
+                              onClick={(e)=> handelSubmit(e, email, password)}
                               sx={{marginTop: 3, width:'60%'}}
                               variant="contained"
                               type='submit'>

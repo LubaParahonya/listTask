@@ -1,6 +1,5 @@
 //import styles from './App.module.css';
 import Card from './component/Card/Card';
-import { LayoutCore } from './component/LayoutCore';
 import {Routes, Route} from 'react-router-dom'
 import './index.css'
 import { Listitem } from './component/ListItem';
@@ -11,6 +10,9 @@ import { Contacts } from './component/Contacts';
 import { ProtectedRout } from './component/ProtectedRout';
 import { Registration } from './component/Auth/Registration';
 import { Login } from './component/Auth/Login';
+import { Navigate } from 'react-router-dom';
+import { Error }from './component/Error/Error';
+
 
 
 function App() {
@@ -30,18 +32,19 @@ function App() {
   // {islogged && <Layout .....} {!isLogged && <Auth }
   return (
     <Routes>
-      <Route path='/' element={<ProtectedRout />} >
-            
+      <Route path='/' element={<ProtectedRout />} >          
                 <Route index path='/' element={<Main />}/> 
                 <Route path='/about' element={<About />} />   
                 <Route path='/card' element={<Listitem /> } />
                 <Route path='/dnd' element={<News />} />
                 <Route path='/contacts' element={<Contacts /> } />
-                <Route path='card/:id' element={<Card />}/>       
-         
+                <Route path='card/:id' element={<Card />}/>
+                            
       </Route>
             <Route path='/reg' element={<Registration />}/>
-            <Route path='/login' element={<Login />}/>    
+            <Route path='/login' element={<Login />}/> 
+            <Route path='/error' element={<Error />}/>
+            <Route path='*' element={<Error />} />    
     </Routes>
   )
 }

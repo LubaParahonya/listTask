@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-//import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   // apiKey: String(import.meta.env.REACT_APP_FIREBASE_VITE_API_KEY),
@@ -19,7 +18,5 @@ const firebaseConfig = {
  measurementId: "G-DT3G6KQN8B"
 };
 
-
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-//const analytics = getAnalytics(app);
