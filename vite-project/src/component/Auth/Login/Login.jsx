@@ -29,6 +29,7 @@ export const Login = () => {
      //      navigate('/')
      // }
 
+     console.log('auth', auth.currentUser);
      const handelSubmit = (e, email, password)=> {
           e.preventDefault()
           console.log('привет ')

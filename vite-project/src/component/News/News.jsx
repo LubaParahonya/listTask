@@ -41,6 +41,7 @@ export const News = () => {
                {(provided) => (
                 <li className={style.itemtask} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} >
                   <div className={style.dNd} >
+                    <p>{el.id}</p>
                     <p>{el.title}</p>
                     <img src={el.url} className={style.img}/>
                   </div>
@@ -52,6 +53,7 @@ export const News = () => {
             </ul>
           )}
          </Droppable>
+         
       </DragDropContext>
     </div>
   )

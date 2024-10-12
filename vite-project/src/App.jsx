@@ -1,4 +1,5 @@
 //import styles from './App.module.css';
+import { useEffect} from 'react';
 import Card from './component/Card/Card';
 import {Routes, Route} from 'react-router-dom'
 import './index.css'
@@ -10,9 +11,9 @@ import { Contacts } from './component/Contacts';
 import { ProtectedRout } from './component/ProtectedRout';
 import { Registration } from './component/Auth/Registration';
 import { Login } from './component/Auth/Login';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Error }from './component/Error/Error';
-
+import { auth } from './firebase'; 
 
 
 function App() {
@@ -26,8 +27,8 @@ function App() {
   // in app mast doesnt have logic 
   // logic to move to LayoutCor
   // to do loading component
-  
 
+  
   //нужно разделить роутинг на два роута 
   // {islogged && <Layout .....} {!isLogged && <Auth }
   return (

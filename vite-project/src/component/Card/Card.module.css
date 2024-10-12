@@ -8,13 +8,6 @@
     position: relative;
 }
 
- /* @media(min-width:900px) and (max-width: 1200px) {
-    .cardMain{
-        background: rgb(222, 166, 220);
-        width: 100px;
-        height: 100px;  
-    }
- } */
 .test{
     width: 500%;
     height: 500%;
